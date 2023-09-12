@@ -668,7 +668,6 @@ function createPanZoom(domElement, options) {
       var dy = point.y - mouseY;
 
       if (dx !== 0 && dy !== 0) {
-	console.log(dx,dy)
         triggerPanStart();
       }
       mouseX = point.x;
