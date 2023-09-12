@@ -674,6 +674,7 @@ function createPanZoom(domElement, options) {
       mouseY = point.y;
       internalMoveBy(dx, dy);
     } else if (e.touches.length === 2) {
+      triggerEvent('zoomstart');
       // it's a zoom, let's find direction
       multiTouch = true;
       var t1 = e.touches[0];
