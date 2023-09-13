@@ -658,21 +658,26 @@ function createPanZoom(domElement, options) {
 
   function handleTouchMove(e) {
     if (e.touches.length === 1) {
-      e.stopPropagation();
-      var touch = e.touches[0];
-
-      var offset = getOffsetXY(touch);
-      var point = transformToScreen(offset.x, offset.y);
-
-      var dx = point.x - mouseX;
-      var dy = point.y - mouseY;
-
-      if (dx !== 0 && dy !== 0) {
-        triggerPanStart();
-      }
-      mouseX = point.x;
-      mouseY = point.y;
-      internalMoveBy(dx, dy);
+      setTimeout(function(){
+	      if {touchInProgress}
+	      {
+		      e.stopPropagation();
+		      var touch = e.touches[0];
+		
+		      var offset = getOffsetXY(touch);
+		      var point = transformToScreen(offset.x, offset.y);
+		
+		      var dx = point.x - mouseX;
+		      var dy = point.y - mouseY;
+		
+		      if (dx !== 0 && dy !== 0) {
+		        triggerPanStart();
+		      }
+		      mouseX = point.x;
+		      mouseY = point.y;
+		      internalMoveBy(dx, dy);      
+	      }
+      }, 1000)
     } else if (e.touches.length === 2) {
       triggerEvent('zoomstart');
       // it's a zoom, let's find direction
