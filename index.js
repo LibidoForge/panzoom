@@ -16,7 +16,7 @@ var makeDomController = require('./lib/makeDomController.js');
 var defaultZoomSpeed = 1;
 var defaultDoubleTapZoomSpeed = 1.75;
 var doubleTapSpeedInMS = 300;
-var clickEventTimeInMS = 100;
+var clickEventTimeInMS = 200;
 
 module.exports = createPanZoom;
 
