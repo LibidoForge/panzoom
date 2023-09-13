@@ -16,7 +16,7 @@ var makeDomController = require('./lib/makeDomController.js');
 var defaultZoomSpeed = 1;
 var defaultDoubleTapZoomSpeed = 1.75;
 var doubleTapSpeedInMS = 300;
-var clickEventTimeInMS = 200;
+var clickEventTimeInMS = 100;
 
 module.exports = createPanZoom;
 
@@ -658,26 +658,21 @@ function createPanZoom(domElement, options) {
 
   function handleTouchMove(e) {
     if (e.touches.length === 1) {
-      setTimeout(function(){
-	      if {touchInProgress}
-	      {
-		      e.stopPropagation();
-		      var touch = e.touches[0];
-		
-		      var offset = getOffsetXY(touch);
-		      var point = transformToScreen(offset.x, offset.y);
-		
-		      var dx = point.x - mouseX;
-		      var dy = point.y - mouseY;
-		
-		      if (dx !== 0 && dy !== 0) {
-		        triggerPanStart();
-		      }
-		      mouseX = point.x;
-		      mouseY = point.y;
-		      internalMoveBy(dx, dy);      
-	      }
-      }, 1000)
+	e.stopPropagation();
+	var touch = e.touches[0];
+	
+	var offset = getOffsetXY(touch);
+	var point = transformToScreen(offset.x, offset.y);
+	
+	var dx = point.x - mouseX;
+	var dy = point.y - mouseY;
+	
+	if (dx !== 0 && dy !== 0) {
+	triggerPanStart();
+	}
+	mouseX = point.x;
+	mouseY = point.y;
+	internalMoveBy(dx, dy);
     } else if (e.touches.length === 2) {
       triggerEvent('zoomstart');
       // it's a zoom, let's find direction
